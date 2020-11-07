@@ -59,7 +59,7 @@ class GenshinReminderView : View("Genshin Reminder") {
 
         val calendar: Calendar = Calendar.getInstance()
         nowTime = format.format(calendar.time)
-        while (!everyDayTimeLine()) println("aaa")
+        while (!everyDayTimeLine()) println("everydayTimeLine Loading...")
 
         currentTimeline.cycleCount = Timeline.INDEFINITE
         currentTimeline.play()
@@ -131,7 +131,6 @@ class GenshinReminderView : View("Genshin Reminder") {
                 prop.setProperty("rdCheckbox3", rdCheckbox3.isSelected.toString())
                 prop.setProperty("rdCheckbox4", rdCheckbox4.isSelected.toString())
                 saveProperties()
-                println("bbbb")
                 oneMore = true
             }
             if (oneMore) return false
