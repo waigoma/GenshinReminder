@@ -1,0 +1,10 @@
+every:
+  3day:
+    nextTime: 2020/11/09 05:00:00
+  1day:
+    nextTime: 2020/11/08 05:00:00
+custom:
+  '1':
+    timer: '72'
+    registerTime: 2020/11/02 04:00:00
+    nextTime: 2020/11/06 04:00:00
