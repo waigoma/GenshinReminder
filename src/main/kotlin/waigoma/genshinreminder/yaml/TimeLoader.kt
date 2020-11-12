@@ -50,7 +50,7 @@ class TimeLoader {
                     for (key: String in map.keys){
                         val nextYml: LinkedHashMap<String, Objects> = yml.load(yml.dump(map[key]))
                         var timer = 0
-                        var registerTime = ""
+                        var active = false
                         var nextTime = ""
 
                         for (nextKey in nextYml.keys){
@@ -59,8 +59,8 @@ class TimeLoader {
                                     timer = nextYml[nextKey].toString().toInt()
                                 }
 
-                                "registerTime" -> {
-                                    registerTime = nextYml[nextKey].toString()
+                                "active" -> {
+                                    active = nextYml[nextKey].toString().toBoolean()
                                 }
 
                                 "nextTime" -> {
@@ -68,7 +68,7 @@ class TimeLoader {
                                 }
                             }
                         }
-                        tm.registerCustom(TimeCustomTemplate(timer, registerTime, nextTime))
+                        tm.registerCustom(TimeCustomTemplate(timer, active, nextTime))
                     }
                     return true
                 }

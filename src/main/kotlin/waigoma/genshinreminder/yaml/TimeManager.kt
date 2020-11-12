@@ -21,8 +21,12 @@ class TimeManager {
         custom.add(tct)
     }
 
-    fun getCustom(num: Int): TimeCustomTemplate{
-        return custom[num]
+    fun changeCustom(num: Int, tct: TimeCustomTemplate){
+        custom[num] = tct
+    }
+
+    fun getCustom(): ArrayList<TimeCustomTemplate>{
+        return custom
     }
 
     fun ymlString(): LinkedHashMap<String, LinkedHashMap<String, LinkedHashMap<String, String>>> {
@@ -42,7 +46,7 @@ class TimeManager {
                     for (number in custom){
                         val lhashMap = LinkedHashMap<String, String>()
                         lhashMap["timer"] = number.timer.toString()
-                        lhashMap["registerTime"] = number.registerTime
+                        lhashMap["active"] = number.active.toString()
                         lhashMap["nextTime"] = number.nextTime
 
                         ymlMap[num.toString()] = lhashMap
