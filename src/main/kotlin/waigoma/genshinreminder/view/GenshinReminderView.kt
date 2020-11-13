@@ -45,7 +45,8 @@ class GenshinReminderView : View("Genshin Reminder") {
     private val ctButton1: Button by fxid("ct_button1")
     private val ctSpinner1: Spinner<Int> by fxid("custom_spinner1")
     private val ctSpinnerValueFactory1: SpinnerValueFactory<Int> = SpinnerValueFactory.IntegerSpinnerValueFactory(1, 1000, 48)
-    private val ctTimer: Label by fxid("countdown1")
+    private val ctTimer1: Label by fxid("countdown1")
+    private val ctLabelList = listOf(ctTimer1)
 
     private val currentTime: Label by fxid("currentTime")
 
@@ -125,7 +126,7 @@ class GenshinReminderView : View("Genshin Reminder") {
                 ct1.nextTime = format.format(ctCalendar1.time)
                 ct1.active = true
             } else {
-                ctTimer.text = "ストップされました。"
+                ctTimer1.text = "ストップされました。"
                 ct1.active = false
             }
             TimeLoader.saveYml()
@@ -198,7 +199,7 @@ class GenshinReminderView : View("Genshin Reminder") {
 
             if (calc[3].toInt() < 0) {
                 number.active = false
-                ctTimer.text = "タイマーが終了しました。"
+                ctLabelList[customNumber].text = "タイマーが終了しました。"
 
                 TimeLoader.saveYml()
                 saveProperties()
@@ -207,11 +208,7 @@ class GenshinReminderView : View("Genshin Reminder") {
             if (oneMore) return false
 
             // ラベル
-            when(customNumber) {
-                0 -> {
-                    ctTimer.text = calc[0] + "日" + calc[1] + "時間" + calc[2] + "分" + calc[3] + "秒"
-                }
-            }
+            ctLabelList[customNumber].text = calc[0] + "日" + calc[1] + "時間" + calc[2] + "分" + calc[3] + "秒"
 
             customNumber++
         }
